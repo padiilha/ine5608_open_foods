@@ -34,7 +34,8 @@ class LoginController:
         if isinstance(self.__usuario, Produtor):
             self.__produtor_view.main_view()
         elif isinstance(self.__usuario, Consumidor):
-            self.__consumidor_view.main_view()
+            # self.__consumidor_view.main_view()
+            print("Passou aqui")
         else:
             raise Exception
 

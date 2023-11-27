@@ -2,7 +2,7 @@ from enum import Enum
 
 
 class TipoChavePixEnum(Enum):
-    CPF_CNPJ = 1
-    CELULAR = 2
-    EMAIL = 3
-    CHAVE_ALEATORIA = 4
+    CPF_CNPJ = "CPF/CNPJ"
+    CELULAR = "Celular"
+    EMAIL = "Email"
+    CHAVE_ALEATORIA = "Chave aleatória"

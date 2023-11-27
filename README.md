@@ -1,5 +1,5 @@
 # OpenFoods: conectando consumidores a produtores
-Trabalho desenvolvido para a disciplina de Análise e Projeto de Sistemas (IN5608) da UFSC para o semestre 2023.2
+Trabalho desenvolvido para a disciplina de Análise e Projeto de Sistemas (INE5608) da UFSC para o semestre 2023.2
 
 ### Estrutura do projeto
 ```

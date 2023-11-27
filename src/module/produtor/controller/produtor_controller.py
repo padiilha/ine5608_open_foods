@@ -15,7 +15,8 @@ class ProdutorController:
                            cpf: str,
                            senha: str,
                            telefone: str,
-                           municipio: Municipio,
+                           municipio_nome: str,
+                           uf: str,
                            nome_fantasia: str,
                            cnpj: str,
                            tipo_certificacao: TipoCertificacaoEnum,
@@ -24,6 +25,7 @@ class ProdutorController:
                            tipo_chave_pix: TipoChavePixEnum,
                            chave_pix: str) -> Produtor:
         if not self.__produtor_dao.get(cpf):
+            municipio = Municipio(municipio_nome, uf)
             produtor = Produtor(nome,
                                 cpf,
                                 senha,
