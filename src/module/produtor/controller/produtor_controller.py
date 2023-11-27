@@ -59,13 +59,17 @@ class ProdutorController:
         for produtor in self.__produtor_dao.get_all():
             lista_produtores.append(produtor)
 
-        return lista_produtores
+        if len(lista_produtores) > 0:
+            return lista_produtores
+        else:
+            raise Exception
 
     def alterar_produtor(self,
                          nome: str,
                          cpf: str,
                          telefone: str,
-                         municipio: Municipio,
+                         municipio_nome: str,
+                         uf: str,
                          nome_fantasia: str,
                          tipo_certificacao: TipoCertificacaoEnum,
                          logradouro: str,
@@ -74,7 +78,9 @@ class ProdutorController:
                          chave_pix: str) -> Produtor:
         produtor = self.__produtor_dao.get(cpf)
 
-        if not produtor:
+        if produtor:
+            municipio = Municipio(municipio_nome, uf)
+
             produtor.nome = nome
             produtor.telefone = telefone
             produtor.municipio = municipio

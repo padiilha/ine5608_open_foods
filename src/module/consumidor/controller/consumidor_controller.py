@@ -28,7 +28,7 @@ class ConsumidorController:
     def consultar_consumidor(self, cpf: str) -> Consumidor:
         consumidor = self.__consumidor_dao.get(cpf)
 
-        if not consumidor:
+        if consumidor:
             return consumidor
         else:
             raise KeyError
@@ -39,12 +39,17 @@ class ConsumidorController:
         for consumidor in self.__consumidor_dao.get_all():
             lista_consumidores.append(consumidor)
 
-        return lista_consumidores
+        if len(lista_consumidores) > 0:
+            return lista_consumidores
+        else:
+            raise Exception
 
-    def alterar_consumidor(self, nome: str, cpf: str, telefone: str, municipio: Municipio) -> Consumidor:
+    def alterar_consumidor(self, nome: str, cpf: str, telefone: str, municipio_nome: str, uf: str) -> Consumidor:
         consumidor = self.__consumidor_dao.get(cpf)
 
-        if not consumidor:
+        if consumidor:
+            municipio = Municipio(municipio_nome, uf)
+
             consumidor.nome = nome
             consumidor.telefone = telefone
             consumidor.municipio = municipio

@@ -27,7 +27,7 @@ class LoginView:
 
     def login_view(self):
         root = tk.Tk()
-        root.title("Cadastro de consumidor")
+        root.title("Login")
 
         cpf_label = tk.Label(root, text="CPF:")
         cpf_label.grid(row=1, column=0, padx=10, pady=10)
@@ -41,7 +41,7 @@ class LoginView:
         self.__senha_input = tk.Entry(root, show="*")
         self.__senha_input.grid(row=2, column=1, padx=10, pady=10)
 
-        button_signup = tk.Button(root, text="Cadastrar", command=self.iniciar_sessao)
+        button_signup = tk.Button(root, text="Entrar", command=self.iniciar_sessao)
         button_signup.grid(row=6, column=0, columnspan=2, pady=10)
 
         root.mainloop()

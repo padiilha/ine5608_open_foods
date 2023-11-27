@@ -9,8 +9,6 @@ from src.module.produtor.view.produtor_view import ProdutorView
 
 class LoginController:
     def __init__(self):
-        self.__produtor_view = ProdutorView()
-        self.__consumidor_view = ConsumidorView()
         self.__produtor_dao = ProdutorDAO()
         self.__consumidor_dao = ConsumidorDAO()
         self.__usuario: Usuario or None = None
@@ -32,10 +30,9 @@ class LoginController:
 
     def redireciona(self):
         if isinstance(self.__usuario, Produtor):
-            self.__produtor_view.main_view()
+            ProdutorView()
         elif isinstance(self.__usuario, Consumidor):
-            # self.__consumidor_view.main_view()
-            print("Passou aqui")
+            ConsumidorView()
         else:
             raise Exception
 
