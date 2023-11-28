@@ -1,4 +1,5 @@
 import tkinter as tk
+
 from tkinter import messagebox
 
 from src.module.produtor.controller.produtor_controller import ProdutorController
@@ -10,15 +11,15 @@ class ProdutorListView:
         self.__produtor_controller = ProdutorController()
         self.__view = None
         self.__produtor = None
-        self.list_view()
+        self.__list_view()
 
-    def alterar_produtor(self):
+    def __alterar_produtor(self):
         self.__view = ProdutorAlterarView(self.__produtor.cpf)
 
-    def remover_produtor(self):
+    def __remover_produtor(self):
         self.__produtor_controller.remover_produtor(self.__produtor.cpf)
 
-    def list_view(self):
+    def __list_view(self):
         try:
             row_count = 1
 
@@ -100,10 +101,10 @@ class ProdutorListView:
                 chave_pix_value = tk.Label(root, text=produtor.chave_pix)
                 chave_pix_value.grid(row=row_count, column=11, padx=10, pady=10)
 
-                button_signup = tk.Button(root, text="Alterar", command=self.alterar_produtor)
+                button_signup = tk.Button(root, text="Alterar", command=self.__alterar_produtor)
                 button_signup.grid(row=row_count, column=12, padx=10, pady=10)
 
-                button_signup = tk.Button(root, text="Remover", command=self.remover_produtor)
+                button_signup = tk.Button(root, text="Remover", command=self.__remover_produtor)
                 button_signup.grid(row=row_count, column=13, padx=10, pady=10)
 
                 row_count += 1

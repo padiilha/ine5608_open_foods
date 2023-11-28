@@ -10,7 +10,7 @@ class Produto:
                  preco_unitario: float,
                  unidade_medida: UnidadeMedidaEnum,
                  produtor: Produtor):
-        self.__id: int = id_produto
+        self.__id_produto: int = id_produto
         self.__nome: str = nome
         self.__descricao: str = descricao
         self.__preco_unitario: float = preco_unitario
@@ -18,8 +18,8 @@ class Produto:
         self.__produtor: Produtor = produtor
 
     @property
-    def id(self) -> int:
-        return self.__id
+    def id_produto(self) -> int:
+        return self.__id_produto
 
     @property
     def nome(self) -> str:

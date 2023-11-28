@@ -27,7 +27,7 @@ class Produtor(Usuario):
         self.__numero_logradouro: int = numero_logradouro
         self.__tipo_chave_pix: TipoChavePixEnum = tipo_chave_pix
         self.__chave_pix: str = chave_pix
-        self.__feiras: list[Feira] or None = None
+        self.__feiras: list = [0]
 
     @property
     def nome_fantasia(self) -> str:
@@ -82,7 +82,7 @@ class Produtor(Usuario):
         self.__chave_pix = chave_pix
 
     @property
-    def feiras(self) -> list[Feira]:
+    def feiras(self) -> list:
         return self.__feiras
 
     def add_feira(self, feira: Feira):

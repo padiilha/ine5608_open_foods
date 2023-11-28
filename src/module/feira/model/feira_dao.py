@@ -7,7 +7,7 @@ class FeiraDAO(DAO):
         super().__init__("feiras.pkl")
 
     def add(self, feira: Feira):
-        if feira is not None and isinstance(feira, Feira) and isinstance(feira.id_feira, str):
+        if feira is not None and isinstance(feira, Feira) and isinstance(feira.id_feira, int):
             super().add(feira.id_feira, feira)
 
     def get(self, id_feira: int):

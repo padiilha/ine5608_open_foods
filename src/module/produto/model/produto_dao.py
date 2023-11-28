@@ -7,8 +7,8 @@ class ProdutoDAO(DAO):
         super().__init__("produtos.pkl")
 
     def add(self, produto: Produto):
-        if produto is not None and isinstance(produto, Produto) and isinstance(produto.id, int):
-            super().add(produto.id, produto)
+        if produto is not None and isinstance(produto, Produto) and isinstance(produto.id_produto, int):
+            super().add(produto.id_produto, produto)
 
     def get(self, id_produto: int):
         return super().get(id_produto)

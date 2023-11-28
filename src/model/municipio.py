@@ -1,9 +1,10 @@
+from src.model.enum.uf_enum import UfEnum
 
 
 class Municipio:
-    def __init__(self, nome: str, uf: str):
+    def __init__(self, nome: str, uf: UfEnum):
         self.__nome: str = nome
-        self.__uf: str = uf
+        self.__uf: UfEnum = uf
 
     @property
     def nome(self) -> str:
@@ -14,9 +15,9 @@ class Municipio:
         self.__nome = nome
 
     @property
-    def uf(self) -> str:
+    def uf(self) -> UfEnum:
         return self.__uf
 
     @uf.setter
-    def uf(self, uf: str):
+    def uf(self, uf: UfEnum):
         self.__uf = uf

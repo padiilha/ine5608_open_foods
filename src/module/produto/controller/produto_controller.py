@@ -41,18 +41,19 @@ class ProdutoController:
         for produto in self.__produtos_dao.get_all():
             lista_produtos.append(produto)
 
-        return lista_produtos
+        if len(lista_produtos) > 0:
+            return lista_produtos
+        else:
+            raise Exception
 
     def alterar_produto(self,
                         id_produto: int,
-                        nome: str,
                         descricao: str,
                         preco_unitario: float,
                         unidade_medida: UnidadeMedidaEnum) -> Produto:
         produto = self.__produtos_dao.get(id_produto)
 
-        if not produto:
-            produto.nome = nome
+        if produto:
             produto.descricao = descricao
             produto.preco_unitario = preco_unitario
             produto.unidade_medida = unidade_medida

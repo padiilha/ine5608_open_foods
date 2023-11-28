@@ -1,5 +1,6 @@
 from src.model.enum.tipo_certificacao_enum import TipoCertificacaoEnum
 from src.model.enum.tipo_chave_pix_enum import TipoChavePixEnum
+from src.model.enum.uf_enum import UfEnum
 from src.model.feira import Feira
 from src.model.municipio import Municipio
 from src.model.produtor import Produtor
@@ -16,7 +17,7 @@ class ProdutorController:
                            senha: str,
                            telefone: str,
                            municipio_nome: str,
-                           uf: str,
+                           uf: UfEnum,
                            nome_fantasia: str,
                            cnpj: str,
                            tipo_certificacao: TipoCertificacaoEnum,
@@ -69,7 +70,7 @@ class ProdutorController:
                          cpf: str,
                          telefone: str,
                          municipio_nome: str,
-                         uf: str,
+                         uf: UfEnum,
                          nome_fantasia: str,
                          tipo_certificacao: TipoCertificacaoEnum,
                          logradouro: str,
@@ -99,11 +100,3 @@ class ProdutorController:
 
     def remover_produtor(self, cpf: str):
         self.__produtor_dao.remove(cpf)
-
-    def vincular_feira(self, cpf: str, feira: Feira):
-        produtor = self.consultar_produtor(cpf)
-        produtor.add_feira(feira)
-
-    def desvincular_feira(self, cpf: str, feira: Feira):
-        produtor = self.consultar_produtor(cpf)
-        produtor.remove_feira(feira)

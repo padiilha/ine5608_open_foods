@@ -1,6 +1,8 @@
 from src.model.enum.dia_semana_enum import DiaSemanaEnum
+from src.model.enum.uf_enum import UfEnum
 from src.model.feira import Feira
 from src.model.municipio import Municipio
+from src.model.produtor import Produtor
 from src.module.feira.model.feira_dao import FeiraDAO
 
 
@@ -11,8 +13,10 @@ class FeiraController:
 
     def cadastrar_feira(self,
                         nome: str,
-                        municipio: Municipio,
+                        municipio_nome: str,
+                        uf: UfEnum,
                         dia_semana: DiaSemanaEnum) -> Feira:
+        municipio = Municipio(municipio_nome, uf)
         feira = Feira(self.__id_counter, nome, municipio, dia_semana)
 
         self.__feira_dao.add(feira)
@@ -31,17 +35,21 @@ class FeiraController:
         for feira in self.__feira_dao.get_all():
             lista_feiras.append(feira)
 
-        return lista_feiras
+        if len(lista_feiras) > 0:
+            return lista_feiras
+        else:
+            raise Exception
 
     def alterar_feira(self,
                       id_feira: int,
-                      nome: str,
-                      municipio: Municipio,
+                      municipio_nome: str,
+                      uf: UfEnum,
                       dia_semana: DiaSemanaEnum) -> Feira:
         feira = self.__feira_dao.get(id_feira)
 
-        if not feira:
-            feira.nome = nome
+        if feira:
+            municipio = Municipio(municipio_nome, uf)
+
             feira.municipio = municipio
             feira.dia_semana = dia_semana
 
@@ -53,3 +61,11 @@ class FeiraController:
 
     def remover_feira(self, id_feira: int):
         self.__feira_dao.remove(id_feira)
+
+    def vincular_feira(self, produtor: Produtor, id_feira: int):
+        feira = self.consultar_feira(id_feira)
+        produtor.add_feira(feira)
+
+    def desvincular_feira(self, produtor: Produtor, id_feira: int):
+        feira = self.consultar_feira(id_feira)
+        produtor.remove_feira(feira)

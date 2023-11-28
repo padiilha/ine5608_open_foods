@@ -24,9 +24,9 @@ class ProdutorCadastroView:
         self.__numero_logradouro_input = None
         self.__tipo_chave_pix_selected = None
         self.__chave_pix_input = None
-        self.cadastro_view()
+        self.__cadastro_view()
 
-    def cadastrar_produtor(self):
+    def __cadastrar_produtor(self):
         nome = self.__nome_input.get()
         cpf = self.__cpf_input.get()
         senha = self.__senha_input.get()
@@ -62,7 +62,7 @@ class ProdutorCadastroView:
         else:
             messagebox.showerror("Erro", "Campos obrigatórios não preenchidos")
 
-    def cadastro_view(self):
+    def __cadastro_view(self):
         root = tk.Tk()
         root.title("Cadastro de produtor")
 
@@ -156,7 +156,7 @@ class ProdutorCadastroView:
         self.__chave_pix_input = tk.Entry(root)
         self.__chave_pix_input.grid(row=6, column=1, columnspan=3)
 
-        button_signup = tk.Button(root, text="Cadastrar", command=self.cadastrar_produtor)
+        button_signup = tk.Button(root, text="Cadastrar", command=self.__cadastrar_produtor)
         button_signup.grid(row=7, column=0, columnspan=4, pady=10)
 
         root.mainloop()

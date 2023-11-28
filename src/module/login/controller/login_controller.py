@@ -30,9 +30,9 @@ class LoginController:
 
     def redireciona(self):
         if isinstance(self.__usuario, Produtor):
-            ProdutorView()
+            ProdutorView(self.__usuario)
         elif isinstance(self.__usuario, Consumidor):
-            ConsumidorView()
+            ConsumidorView(self.__usuario)
         else:
             raise Exception
 

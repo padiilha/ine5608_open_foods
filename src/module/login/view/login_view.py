@@ -10,9 +10,9 @@ class LoginView:
         self.__login_controller = LoginController()
         self.__cpf_input = None
         self.__senha_input = None
-        self.login_view()
+        self.__login_view()
 
-    def iniciar_sessao(self):
+    def __iniciar_sessao(self):
         cpf = self.__cpf_input.get()
         senha = self.__senha_input.get()
 
@@ -25,7 +25,7 @@ class LoginView:
         else:
             messagebox.showerror("Erro", "Campos obrigatórios não preenchidos")
 
-    def login_view(self):
+    def __login_view(self):
         root = tk.Tk()
         root.title("Login")
 
@@ -41,7 +41,7 @@ class LoginView:
         self.__senha_input = tk.Entry(root, show="*")
         self.__senha_input.grid(row=2, column=1, padx=10, pady=10)
 
-        button_signup = tk.Button(root, text="Entrar", command=self.iniciar_sessao)
+        button_signup = tk.Button(root, text="Entrar", command=self.__iniciar_sessao)
         button_signup.grid(row=6, column=0, columnspan=2, pady=10)
 
         root.mainloop()

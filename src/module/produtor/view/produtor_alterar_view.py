@@ -22,9 +22,9 @@ class ProdutorAlterarView:
         self.__numero_logradouro_input = None
         self.__tipo_chave_pix_selected = None
         self.__chave_pix_input = None
-        self.alterar_view()
+        self.__alterar_view()
 
-    def alterar_produtor(self):
+    def __alterar_produtor(self):
         nome = self.__nome_input.get()
         telefone = self.__telefone_input.get()
         municipio = self.__municipio_input.get()
@@ -52,7 +52,7 @@ class ProdutorAlterarView:
         except KeyError:
             messagebox.showerror("Erro", "CPF não encontrado")
 
-    def alterar_view(self):
+    def __alterar_view(self):
         try:
             produtor = self.__produtor_controller.consultar_produtor(self.__cpf)
 
@@ -68,8 +68,8 @@ class ProdutorAlterarView:
             cpf_label = tk.Label(root, text="CPF:")
             cpf_label.grid(row=1, column=0, padx=10, pady=10)
 
-            cpf_label = tk.Label(root, text=produtor.cpf)
-            cpf_label.grid(row=1, column=1, padx=10, pady=10)
+            cpf_value = tk.Label(root, text=produtor.cpf)
+            cpf_value.grid(row=1, column=1, padx=10, pady=10)
 
             telefone_label = tk.Label(root, text="Telefone:")
             telefone_label.grid(row=2, column=0, padx=10, pady=10)
@@ -143,9 +143,10 @@ class ProdutorAlterarView:
             self.__chave_pix_input = tk.Entry(root)
             self.__chave_pix_input.grid(row=5, column=3, padx=10, pady=10)
 
-            button_signup = tk.Button(root, text="Atualizar informações", command=self.alterar_produtor)
+            button_signup = tk.Button(root, text="Atualizar informações", command=self.__alterar_produtor)
             button_signup.grid(row=6, column=0, columnspan=2, pady=10)
 
             root.mainloop()
+
         except KeyError:
             messagebox.showerror("Erro", "CPF não encontrado")

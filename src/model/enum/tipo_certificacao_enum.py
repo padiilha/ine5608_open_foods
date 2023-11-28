@@ -2,6 +2,6 @@ from enum import Enum
 
 
 class TipoCertificacaoEnum(Enum):
-    TIPO1 = 1
-    TIPO2 = 2
-    TIPO3 = 3
+    AUDITORIA = "Auditoria"
+    PARTICIPATIVA = "Participativa"
+    VENDA_DIRETA = "Venda direta"

@@ -14,7 +14,7 @@ class ConsumidorController:
                              senha: str,
                              telefone: str,
                              municipio_nome: str,
-                             uf: str) -> Consumidor:
+                             uf: UfEnum) -> Consumidor:
         if not self.__consumidor_dao.get(cpf):
             municipio = Municipio(municipio_nome, uf)
             consumidor = Consumidor(nome, cpf, senha, telefone, municipio)
@@ -44,7 +44,7 @@ class ConsumidorController:
         else:
             raise Exception
 
-    def alterar_consumidor(self, nome: str, cpf: str, telefone: str, municipio_nome: str, uf: str) -> Consumidor:
+    def alterar_consumidor(self, nome: str, cpf: str, telefone: str, municipio_nome: str, uf: UfEnum) -> Consumidor:
         consumidor = self.__consumidor_dao.get(cpf)
 
         if consumidor:
