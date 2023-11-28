@@ -7,7 +7,6 @@ from src.module.produto.model.produto_dao import ProdutoDAO
 class ProdutoController:
     def __init__(self):
         self.__produtos_dao = ProdutoDAO()
-        self.__id_counter = 1
 
     def cadastrar_produto(self,
                           nome: str,
@@ -15,7 +14,12 @@ class ProdutoController:
                           preco_unitario: float,
                           unidade_medida: UnidadeMedidaEnum,
                           produtor: Produtor) -> Produto:
-        produto = Produto(self.__id_counter,
+        try:
+            id_produto = self.__produtos_dao.get_last_item_id() + 1
+        except Exception:
+            id_produto = 1
+
+        produto = Produto(id_produto,
                           nome,
                           descricao,
                           preco_unitario,
@@ -23,7 +27,6 @@ class ProdutoController:
                           produtor)
 
         self.__produtos_dao.add(produto)
-        self.__id_counter += 1
 
         return produto
 

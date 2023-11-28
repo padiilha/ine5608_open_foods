@@ -3,11 +3,15 @@ from src.model.produto import Produto
 
 
 class PedidoItem:
-    def __init__(self, id_item: int, produto: Produto, quantidade: int):
+    def __init__(self, id_item: int, produto: Produto):
         self.__id_item: int = id_item
         self.__produto: Produto = produto
-        self.__quantidade: int = quantidade
+        self.__quantidade: int = 1
         self.__pedido: Pedido or None = None
+
+    @property
+    def id_item(self) -> int:
+        return self.__id_item
 
     @property
     def produto(self) -> Produto:

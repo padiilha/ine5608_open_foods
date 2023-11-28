@@ -43,3 +43,10 @@ class DAO(ABC):
 
     def cache_size(self) -> int:
         return len(self.__cache)
+
+    def get_last_item_id(self) -> int:
+        return list(self.__cache)[-1]
+
+    def clear(self):
+        self.__cache.clear()
+        self.update()

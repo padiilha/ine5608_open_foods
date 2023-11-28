@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import messagebox
 
 from src.model.consumidor import Consumidor
+from src.module.cesta.view.cesta_view import CestaView
 from src.module.produto.controller.produto_controller import ProdutoController
 from src.module.produto.view.produto_alterar_view import ProdutoAlterarView
 
@@ -20,6 +21,12 @@ class ProdutoListView:
 
     def __remover_produto(self):
         self.__produto_controller.remover_produto(self.__produto.id_produto)
+
+    def __adicionar_cesta(self):
+        self.__view = CestaView(self.__usuario).adicionar_item(self.__produto)
+
+    def __ver_cesta(self):
+        self.__view = CestaView(self.__usuario)
 
     def __list_view(self):
         try:
@@ -62,7 +69,8 @@ class ProdutoListView:
                 produtor_value.grid(row=row_count, column=4, padx=10, pady=10)
 
                 if isinstance(self.__usuario, Consumidor):
-                    ...
+                    button_signup = tk.Button(root, text="Adicionar à cesta", command=self.__adicionar_cesta)
+                    button_signup.grid(row=row_count, column=5, padx=10, pady=10)
                 else:
                     button_signup = tk.Button(root, text="Alterar", command=self.__alterar_produto)
                     button_signup.grid(row=row_count, column=5, padx=10, pady=10)
@@ -71,6 +79,10 @@ class ProdutoListView:
                     button_signup.grid(row=row_count, column=6, padx=10, pady=10)
 
                 row_count += 1
+
+            if isinstance(self.__usuario, Consumidor):
+                button_signup = tk.Button(root, text="Ver cesta", command=self.__ver_cesta)
+                button_signup.grid(row=row_count, columnspan=6, pady=10)
 
             root.mainloop()
 

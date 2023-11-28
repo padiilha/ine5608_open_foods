@@ -13,6 +13,7 @@ Trabalho desenvolvido para a disciplina de Análise e Projeto de Sistemas (INE56
 │   ├── module ----------------------------- MÓDULOS DO PROJETO
 │   │   ├── cesta
 │   │   │   ├── controller
+│   │   │   ├── model
 │   │   │   └── view
 │   │   ├── consumidor
 │   │   │   ├── controller
